@@ -7,7 +7,7 @@ Exercism has also two Bootcamps:
 - [Coding Fundamentals](https://exercism.org/courses/coding-fundamentals)
 - [Front-End Fundamentals](https://exercism.org/courses/front-end-fundamentals)
 
-The two bootcamps come with a little cost, but they are greatly affordable
+The two bootcamps come with a little cost, but they are greatly affordable.
 
 ## What is this repo about?
 On Exercism, you solve exercises by uploading a solution. 

@@ -1,0 +1,47 @@
+"""
+Module that provides a function to calculate the resistance value of 
+transistors based on their colour codes.
+The values are divided into three categories "kilo", "mega", and "giga"
+according to their number of zeros.
+Ohms value are returned.
+"""
+
+COLORS = [
+    "black", "brown", "red", "orange", "yellow",
+    "green", "blue", "violet", "grey", "white",
+]
+
+KILO = 1000
+MEGA = 1_000_000
+GIGA = 1_000_000_000
+
+def label(colors: list[str]) -> str:
+    """
+    Calculates the resistance value from three color bands and formats it with appropriate prefixes.
+
+    Args:
+        colors: A list of three strings representing the color bands.
+
+    Returns:
+        A string representing the resistance value in ohms, with metric prefixes if applicable.
+    """
+    # Calculate the base value from the first two bands
+    first_digit = COLORS.index(colors[0])
+    second_digit = COLORS.index(colors[1])
+    base_value = first_digit * 10 + second_digit
+
+    # Calculate the multiplier from the third band
+    multiplier_power = COLORS.index(colors[2])
+    resistance_value = base_value * (10 ** multiplier_power)
+
+    if resistance_value == 0:
+        return "0 ohms"
+
+    if resistance_value >= GIGA and resistance_value % GIGA == 0:
+        return f"{resistance_value // GIGA} gigaohms"
+    elif resistance_value >= MEGA and resistance_value % MEGA == 0:
+        return f"{resistance_value // MEGA} megaohms"
+    elif resistance_value >= KILO and resistance_value % KILO == 0:
+        return f"{resistance_value // KILO} kiloohms"
+    else:
+        return f"{resistance_value} ohms"
